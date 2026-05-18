@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from 'react'
+import { useEffect, useMemo, useState, useRef } from 'react'
 import './App.css'
 import { englishContent } from './content/fasting.en'
 import { portugueseContent } from './content/fasting.pt'
@@ -60,10 +60,20 @@ function App() {
     () => localStorage.getItem('fasting-start-time') || getLocalDateTimeValue()
   )
   const [now, setNow] = useState(new Date())
+  const activeStageRef = useRef(null)
 
   const content = contents[language]
   const t = content.ui
   const stages = dietMode === 'ketogenic' ? content.ketogenicStages : content.standardStages
+
+  const fastingHours = useMemo(() => {
+    const started = new Date(startTime)
+    if (Number.isNaN(started.getTime())) return 0
+    return Math.max(0, (now.getTime() - started.getTime()) / 36e5)
+  }, [startTime, now])
+
+  const currentStage = getStage(fastingHours, stages)
+  const nextStage = stages.find((stage) => stage.from >= currentStage.to)
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000)
@@ -82,14 +92,14 @@ function App() {
     localStorage.setItem('fasting-diet-mode', dietMode)
   }, [dietMode])
 
-  const fastingHours = useMemo(() => {
-    const started = new Date(startTime)
-    if (Number.isNaN(started.getTime())) return 0
-    return Math.max(0, (now.getTime() - started.getTime()) / 36e5)
-  }, [startTime, now])
-
-  const currentStage = getStage(fastingHours, stages)
-  const nextStage = stages.find((stage) => stage.from >= currentStage.to)
+  useEffect(() => {
+    if (activeStageRef.current) {
+      activeStageRef.current.scrollIntoView({
+        behavior: 'smooth',
+        block: 'start'
+      })
+    }
+  }, [currentStage.title])
 
   const stageProgress = Math.min(
     100,
@@ -98,14 +108,9 @@ function App() {
 
   const totalProgress = Math.min(100, (fastingHours / 36) * 100)
 
-  const remainingStageMinutes = Math.max(0, Math.ceil((currentStage.to - fastingHours) * 60))
-
-  const remainingStageProgress = Math.min(
-    100,
-    Math.max(0, ((currentStage.to - fastingHours) / (currentStage.to - currentStage.from)) * 100)
-  )
-
-  const remainingTicks = Math.round((remainingStageProgress / 100) * 60)
+  const elapsedInStage = Math.max(0, fastingHours - currentStage.from)
+  const stageDuration = currentStage.to - currentStage.from
+  const elapsedTicks = Math.min(60, Math.floor((elapsedInStage / stageDuration) * 60))
 
   function startNow() {
     setStartTime(getLocalDateTimeValue())
@@ -154,10 +159,10 @@ function App() {
       </section>
 
       <section className="grid">
-        <div className="panel current">
+        <div className={`panel current phase-${currentStage.phase.match(/\d/)?.[0] || '1'}`}>
           <p className="eyebrow">{t.currentPhase}</p>
-          <h2>{currentStage.title}</h2>
           <h3>{currentStage.phase}</h3>
+          <h2>{currentStage.title}</h2>
 
           <div className="stats">
             <div>
@@ -167,12 +172,21 @@ function App() {
 
             <div>
               <span>{t.stageRange}</span>
-              <strong>{currentStage.from}–{currentStage.to}h</strong>
+              <strong>{currentStage.phaseFrom}–{currentStage.phaseTo}h</strong>
             </div>
 
             <div>
               <span>{t.nextStage}</span>
-              <strong>{nextStage ? `${nextStage.from}h` : '36h+'}</strong>
+              <strong className="nextStageInfo">
+                {nextStage ? (
+                  <>
+                    <span className="nextTime">{nextStage.from}h</span>
+                    <span className="nextTitle">{nextStage.title}</span>
+                  </>
+                ) : (
+                  '36h+'
+                )}
+              </strong>
             </div>
           </div>
 
@@ -190,7 +204,7 @@ function App() {
           <div className="minuteBlock">
             <div className="progressLabel">
               <span>{t.minuteBar}</span>
-              <span>{formatDuration(remainingStageMinutes / 60)}</span>
+              <span>{formatDuration(elapsedInStage)}</span>
             </div>
 
             <div className="minuteRail">
@@ -199,10 +213,10 @@ function App() {
                   key={index}
                   className={[
                     'minuteTick',
-                    index < remainingTicks ? 'active' : '',
-                    index === remainingTicks - 1 ? 'currentMinute' : ''
+                    index < elapsedTicks ? 'active' : '',
+                    index === elapsedTicks ? 'currentMinute' : ''
                   ].join(' ')}
-                  title={`${remainingStageMinutes} min`}
+                  title={`${Math.round((index / 60) * stageDuration * 60)} min`}
                 />
               ))}
             </div>
@@ -221,7 +235,7 @@ function App() {
         <aside className="panel timeline">
           <h2>{t.timeline}</h2>
 
-          <div className="progressBlock">
+          <div className="progressBlock totalProgressBlock">
             <div className="progressLabel">
               <span>{t.overallProgress}</span>
               <span>{Math.round(totalProgress)}%</span>
@@ -248,6 +262,7 @@ function App() {
             {stages.map((stage) => {
               const status = getStageStatus(stage, fastingHours, currentStage)
               const phaseStart = addHours(startTime, stage.from)
+              const phaseNumber = stage.phase.match(/\d/)?.[0] || '1'
 
               const hint = [
                 stage.title,
@@ -263,14 +278,19 @@ function App() {
               ].join('\n')
 
               return (
-                <div key={stage.title} className={`stage ${status}`} title={hint}>
+                <div
+                  key={stage.title}
+                  ref={status === 'active' ? activeStageRef : null}
+                  className={`stage ${status} phase-${phaseNumber}`}
+                  title={hint}
+                >
                   <div className="stageHeader">
                     <span>{stage.from}–{stage.to}h</span>
                     <em>{t[status]}</em>
                   </div>
 
-                  <strong>{stage.title}</strong>
                   <small>{stage.phase}</small>
+                  <strong>{stage.title}</strong>
 
                   <div className="stageTime">
                     <span>{t.starts}</span>

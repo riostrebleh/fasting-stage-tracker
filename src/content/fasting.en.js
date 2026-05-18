@@ -4,7 +4,7 @@ export const englishContent = {
     language: 'Language',
     title: 'What fasting phase are you in?',
     subtitle:
-      'Track your estimated metabolic phase based on fasting time, diet type, elapsed time and the next transition. Keep going — one phase at a time 🚀',
+      'Track your estimated metabolic phase based on fasting time, diet type, elapsed time and the next stage. Keep going — one stage at a time 🚀',
     startedAt: 'Fasting started at',
     dietMode: 'Diet mode',
     ketogenic: 'Ketogenic / low carb',
@@ -12,10 +12,11 @@ export const englishContent = {
     startNow: 'Start now',
     currentPhase: 'Current phase',
     elapsed: 'Elapsed',
-    stageRange: 'Stage range',
+    stageRange: 'Interval',
     nextStage: 'Next stage',
     progressInStage: 'Progress in this stage',
-    minuteBar: 'Minute bar',
+    minuteBar: 'Minutes of the hour',
+    transition: 'Stage',
     timeline: '36-hour timeline',
     overallProgress: 'Overall progress',
     passed: 'Passed',
@@ -31,6 +32,8 @@ export const englishContent = {
     {
       from: 0,
       to: 4,
+      phaseFrom: 0,
+      phaseTo: 12,
       title: 'The Fed State Transition',
       phase: 'Phase 1 — Glycogen Depletion',
       summary:
@@ -47,6 +50,8 @@ export const englishContent = {
     {
       from: 4,
       to: 8,
+      phaseFrom: 0,
+      phaseTo: 12,
       title: 'The Metabolic Shift Begins',
       phase: 'Phase 1 — Glycogen Depletion',
       summary:
@@ -63,6 +68,8 @@ export const englishContent = {
     {
       from: 8,
       to: 12,
+      phaseFrom: 0,
+      phaseTo: 12,
       title: 'The Hunger Games',
       phase: 'Phase 1 — Glycogen Depletion',
       summary:
@@ -79,6 +86,8 @@ export const englishContent = {
     {
       from: 12,
       to: 15,
+      phaseFrom: 12,
+      phaseTo: 18,
       title: 'From Sugar Mode to Fat Mode',
       phase: 'Phase 2 — The Metabolic Switch',
       summary:
@@ -95,6 +104,8 @@ export const englishContent = {
     {
       from: 15,
       to: 18,
+      phaseFrom: 12,
+      phaseTo: 18,
       title: 'Ketone Production Begins',
       phase: 'Phase 2 — The Metabolic Switch',
       summary:
@@ -111,6 +122,8 @@ export const englishContent = {
     {
       from: 18,
       to: 21,
+      phaseFrom: 18,
+      phaseTo: 24,
       title: 'Ketone Ramp-Up',
       phase: 'Phase 3 — Deep Ketosis and Autophagy Activation',
       summary:
@@ -127,6 +140,8 @@ export const englishContent = {
     {
       from: 21,
       to: 24,
+      phaseFrom: 18,
+      phaseTo: 24,
       title: 'Cellular Cleanup Mode',
       phase: 'Phase 3 — Deep Ketosis and Autophagy Activation',
       summary:
@@ -143,6 +158,8 @@ export const englishContent = {
     {
       from: 24,
       to: 27,
+      phaseFrom: 24,
+      phaseTo: 30,
       title: 'Maximum Fat Oxidation',
       phase: 'Phase 4 — Peak Metabolic Transformation',
       summary:
@@ -159,6 +176,8 @@ export const englishContent = {
     {
       from: 27,
       to: 30,
+      phaseFrom: 24,
+      phaseTo: 30,
       title: 'Repair and Adaptation Peak',
       phase: 'Phase 4 — Peak Metabolic Transformation',
       summary:
@@ -175,6 +194,8 @@ export const englishContent = {
     {
       from: 30,
       to: 33,
+      phaseFrom: 30,
+      phaseTo: 36,
       title: 'Metabolic Flexibility Peak',
       phase: 'Phase 5 — The Reset and Recovery',
       summary:
@@ -191,6 +212,8 @@ export const englishContent = {
     {
       from: 33,
       to: 36,
+      phaseFrom: 30,
+      phaseTo: 36,
       title: 'Preparation for Refeeding',
       phase: 'Phase 5 — The Reset and Recovery',
       summary:
@@ -237,6 +260,8 @@ englishContent.ketogenicStages = englishContent.standardStages.map((stage, index
 
   return {
     ...stage,
+    phaseFrom: stage.phaseFrom,
+    phaseTo: stage.phaseTo,
     ...(ketoOverrides[index] || {
       phase: stage.phase.replace('Phase', 'Keto Phase'),
       feeling: `${stage.feeling} On low carb, this phase may arrive faster than in the standard cycle ⚡`

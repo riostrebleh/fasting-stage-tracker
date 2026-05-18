@@ -4,7 +4,7 @@ export const portugueseContent = {
     language: 'Linguagem',
     title: 'Em qual fase do jejum você está?',
     subtitle:
-      'Acompanhe sua fase metabólica estimada com base no tempo de jejum, tipo de dieta, tempo decorrido e próxima transição. Continue firme — uma fase de cada vez 🚀',
+      'Acompanhe sua fase metabólica estimada com base no tempo de jejum, tipo de dieta, tempo decorrido e próximo estágio. Continue firme — um estágio de cada vez 🚀',
     startedAt: 'Jejum começou em',
     dietMode: 'Tipo de dieta',
     ketogenic: 'Cetogênica / low carb',
@@ -12,10 +12,11 @@ export const portugueseContent = {
     startNow: 'Iniciar agora',
     currentPhase: 'Fase atual',
     elapsed: 'Tempo',
-    stageRange: 'Intervalo da fase',
-    nextStage: 'Próxima fase',
-    progressInStage: 'Progresso nesta fase',
-    minuteBar: 'Barra dos minutos',
+    stageRange: 'Intervalo',
+    nextStage: 'Próximo estágio',
+    progressInStage: 'Progresso neste estágio',
+    minuteBar: 'Minutos da hora',
+    transition: 'Estágio',
     timeline: 'Linha do tempo de 36 horas',
     overallProgress: 'Progresso geral',
     passed: 'Concluída',
@@ -31,6 +32,8 @@ export const portugueseContent = {
     {
       from: 0,
       to: 4,
+      phaseFrom: 0,
+      phaseTo: 12,
       title: 'Transição do Estado Alimentado',
       phase: 'Fase 1 — Depleção de Glicogênio',
       summary:
@@ -47,6 +50,8 @@ export const portugueseContent = {
     {
       from: 4,
       to: 8,
+      phaseFrom: 0,
+      phaseTo: 12,
       title: 'A Virada Metabólica Começa',
       phase: 'Fase 1 — Depleção de Glicogênio',
       summary:
@@ -63,6 +68,8 @@ export const portugueseContent = {
     {
       from: 8,
       to: 12,
+      phaseFrom: 0,
+      phaseTo: 12,
       title: 'Jogos Vorazes da Fome',
       phase: 'Fase 1 — Depleção de Glicogênio',
       summary:
@@ -79,6 +86,8 @@ export const portugueseContent = {
     {
       from: 12,
       to: 15,
+      phaseFrom: 12,
+      phaseTo: 18,
       title: 'Do Modo Açúcar para o Modo Gordura',
       phase: 'Fase 2 — Virada Metabólica',
       summary:
@@ -95,6 +104,8 @@ export const portugueseContent = {
     {
       from: 15,
       to: 18,
+      phaseFrom: 12,
+      phaseTo: 18,
       title: 'Produção de Cetonas Começa',
       phase: 'Fase 2 — Virada Metabólica',
       summary:
@@ -111,6 +122,8 @@ export const portugueseContent = {
     {
       from: 18,
       to: 21,
+      phaseFrom: 18,
+      phaseTo: 24,
       title: 'Subida das Cetonas',
       phase: 'Fase 3 — Cetose Profunda e Ativação da Autofagia',
       summary:
@@ -127,6 +140,8 @@ export const portugueseContent = {
     {
       from: 21,
       to: 24,
+      phaseFrom: 18,
+      phaseTo: 24,
       title: 'Modo Limpeza Celular',
       phase: 'Fase 3 — Cetose Profunda e Ativação da Autofagia',
       summary:
@@ -143,6 +158,8 @@ export const portugueseContent = {
     {
       from: 24,
       to: 27,
+      phaseFrom: 24,
+      phaseTo: 30,
       title: 'Oxidação Máxima de Gordura',
       phase: 'Fase 4 — Transformação Metabólica',
       summary:
@@ -159,6 +176,8 @@ export const portugueseContent = {
     {
       from: 27,
       to: 30,
+      phaseFrom: 24,
+      phaseTo: 30,
       title: 'Pico de Reparo e Adaptação',
       phase: 'Fase 4 — Transformação Metabólica',
       summary:
@@ -175,6 +194,8 @@ export const portugueseContent = {
     {
       from: 30,
       to: 33,
+      phaseFrom: 30,
+      phaseTo: 36,
       title: 'Pico de Flexibilidade Metabólica',
       phase: 'Fase 5 — Reset e Recuperação',
       summary:
@@ -191,6 +212,8 @@ export const portugueseContent = {
     {
       from: 33,
       to: 36,
+      phaseFrom: 30,
+      phaseTo: 36,
       title: 'Preparação para Realimentação',
       phase: 'Fase 5 — Reset e Recuperação',
       summary:
@@ -237,6 +260,8 @@ portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage,
 
   return {
     ...stage,
+    phaseFrom: stage.phaseFrom,
+    phaseTo: stage.phaseTo,
     ...(ketoOverrides[index] || {
       phase: stage.phase.replace('Fase', 'Fase Cetogênica'),
       feeling: `${stage.feeling} Em low carb, essa fase pode chegar mais rápido do que no ciclo padrão ⚡`
