@@ -60,6 +60,7 @@ function App() {
     () => localStorage.getItem('fasting-start-time') || getLocalDateTimeValue()
   )
   const [now, setNow] = useState(new Date())
+  const [activeTab, setActiveTab] = useState('tips')
   const activeStageRef = useRef(null)
 
   const content = contents[language]
@@ -74,6 +75,14 @@ function App() {
 
   const currentStage = getStage(fastingHours, stages)
   const nextStage = stages.find((stage) => stage.from >= currentStage.to)
+
+  const bibleVerse = useMemo(() => {
+    if (!currentStage.bible || currentStage.bible.length === 0) return null
+    // Usar uma semente baseada no título do estágio para manter o versículo "fixo" por estágio
+    const seed = currentStage.title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    const index = seed % currentStage.bible.length
+    return currentStage.bible[index]
+  }, [currentStage])
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000)
@@ -222,14 +231,64 @@ function App() {
             </div>
           </div>
 
-          <p className="summary">{currentStage.summary}</p>
-          <p className="feeling">{currentStage.feeling}</p>
+          <div className="tabs">
+            <button
+              type="button"
+              className={activeTab === 'tips' ? 'active' : ''}
+              onClick={() => setActiveTab('tips')}
+            >
+              {t.tabs.tips}
+            </button>
+            <button
+              type="button"
+              className={activeTab === 'science' ? 'active' : ''}
+              onClick={() => setActiveTab('science')}
+            >
+              {t.tabs.science}
+            </button>
+            <button
+              type="button"
+              className={activeTab === 'bible' ? 'active' : ''}
+              onClick={() => setActiveTab('bible')}
+            >
+              {t.tabs.bible}
+            </button>
+          </div>
 
-          <ul className="detailsList">
-            {currentStage.details.map((detail) => (
-              <li key={detail}>{detail}</li>
-            ))}
-          </ul>
+          {activeTab === 'tips' && (
+            <div className="tabContent">
+              <p className="summary">{currentStage.summary}</p>
+              <p className="feeling">{currentStage.feeling}</p>
+              <ul className="detailsList">
+                {currentStage.details.map((detail) => (
+                  <li key={detail}>{detail}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {activeTab === 'science' && (
+            <div className="tabContent">
+              <ul className="detailsList scienceList">
+                {currentStage.scientific?.map((item) => (
+                  <li key={item}>{item}</li>
+                ))}
+              </ul>
+            </div>
+          )}
+
+          {activeTab === 'bible' && (
+            <div className="tabContent bibleContent">
+              {bibleVerse ? (
+                <blockquote>
+                  <p>"{bibleVerse.text}"</p>
+                  <cite>— {bibleVerse.reference}</cite>
+                </blockquote>
+              ) : (
+                <p>...</p>
+              )}
+            </div>
+          )}
         </div>
 
         <aside className="panel timeline">

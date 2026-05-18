@@ -305,10 +305,82 @@ select {
 
 .summary {
   max-width: 740px;
-  margin: 26px auto 0;
+  margin: 0 auto;
   color: #ececf1;
   font-size: 1.1rem;
   line-height: 1.65;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin: 28px 0;
+  border-bottom: 1px solid #2a2a35;
+  padding-bottom: 12px;
+}
+
+.tabs button {
+  background: transparent;
+  border: none;
+  color: #a7a7b3;
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 8px 16px;
+  cursor: pointer;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.tabs button:hover {
+  color: #fff;
+  background: rgba(255, 255, 255, 0.05);
+}
+
+.tabs button.active {
+  color: #fff;
+  background: var(--phase-color);
+  color: #000;
+}
+
+.tabContent {
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.bibleContent {
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 18px;
+  border: 1px dashed rgba(255, 255, 255, 0.1);
+}
+
+.bibleContent blockquote {
+  margin: 0;
+  padding: 0;
+}
+
+.bibleContent p {
+  font-size: 1.3rem;
+  line-height: 1.5;
+  color: #fff;
+  font-style: italic;
+  margin-bottom: 12px;
+}
+
+.bibleContent cite {
+  font-size: 0.95rem;
+  color: var(--phase-color);
+  font-weight: 700;
+  font-style: normal;
+}
+
+.scienceList li {
+  color: #8be9fd !important; /* Cor levemente diferente para ciência */
 }
 
 .feeling {
@@ -322,7 +394,7 @@ select {
 
 .detailsList {
   max-width: 740px;
-  margin: 22px auto 0;
+  margin: 0 auto;
   padding-left: 22px;
   display: grid;
   gap: 10px;
