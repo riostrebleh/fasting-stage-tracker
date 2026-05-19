@@ -302,7 +302,7 @@ englishContent.ketogenicStages = englishContent.standardStages.map((stage, index
   const ketoOverrides = [
     {
       title: 'Smart Refeed (Low Carb)',
-      phase: 'Keto Phase 1 — The Metabolic Trick',
+      phase: 'Phase 1 — Glycogen Depletion',
       summary:
         'Food is back, but without the carb tsunami, your body keeps one foot in fat-burning mode.',
       feeling:
@@ -310,7 +310,7 @@ englishContent.ketogenicStages = englishContent.standardStages.map((stage, index
     },
     {
       title: 'Energy Stabilization',
-      phase: 'Keto Phase 1 — The Metabolic Trick',
+      phase: 'Phase 1 — Glycogen Depletion',
       summary:
         'Digestion is happening, but glucose and insulin levels stay well-behaved.',
       feeling:
@@ -318,7 +318,7 @@ englishContent.ketogenicStages = englishContent.standardStages.map((stage, index
     },
     {
       title: 'Express to Fat Mode',
-      phase: 'Keto Phase 2 — Metabolic Shortcut',
+      phase: 'Phase 1 — Glycogen Depletion',
       summary:
         'Since you didn’t refill glycogen stores, your body goes back to using fat as primary fuel in the blink of an eye.',
       feeling:
@@ -332,7 +332,7 @@ englishContent.ketogenicStages = englishContent.standardStages.map((stage, index
     phaseTo: stage.phaseTo,
     scientific: stage.scientific,
     ...(ketoOverrides[index] || {
-      phase: stage.phase.replace('Phase', 'Keto Phase'),
+      phase: stage.phase,
       feeling: `${stage.feeling} On low carb, this phase may arrive faster than in the standard cycle ⚡`
     }),
     details: [

@@ -302,7 +302,7 @@ portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage,
   const ketoOverrides = [
     {
       title: 'Recarga Inteligente (Low Carb)',
-      phase: 'Fase Cetogênica 1 — O Truque Metabólico',
+      phase: 'Fase 1 — Depleção de Glicogênio',
       summary:
         'A comida entrou, mas sem o tsunami de carboidratos seu corpo continua com um pé no modo queima de gordura.',
       feeling:
@@ -310,7 +310,7 @@ portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage,
     },
     {
       title: 'Estabilização de Energia',
-      phase: 'Fase Cetogênica 1 — O Truque Metabólico',
+      phase: 'Fase 1 — Depleção de Glicogênio',
       summary:
         'A digestão está acontecendo, mas os níveis de glicose e insulina continuam comportados.',
       feeling:
@@ -318,7 +318,7 @@ portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage,
     },
     {
       title: 'Express para o Modo Gordura',
-      phase: 'Fase Cetogênica 2 — Atalho Metabólico',
+      phase: 'Fase 1 — Depleção de Glicogênio',
       summary:
         'Como você não lotou o estoque de glicogênio, seu corpo volta a usar gordura como fonte principal num piscar de olhos.',
       feeling:
@@ -332,7 +332,7 @@ portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage,
     phaseTo: stage.phaseTo,
     scientific: stage.scientific,
     ...(ketoOverrides[index] || {
-      phase: stage.phase.replace('Fase', 'Fase Cetogênica'),
+      phase: stage.phase,
       feeling: `${stage.feeling} Em low carb, essa fase pode chegar mais rápido do que no ciclo padrão ⚡`
     }),
     details: [

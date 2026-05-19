@@ -165,19 +165,19 @@ select {
 }
 
 .current h2 {
-  margin: 0;
+  margin: 0 0 12px;
+  color: var(--phase-color, #c9b8ff);
   font-size: clamp(1.4rem, 3.5vw, 2.8rem);
   line-height: 1.15;
   letter-spacing: -0.02em;
-  color: #fff;
+  text-transform: uppercase;
 }
 
 .current h3 {
-  margin: 0 0 12px;
-  color: var(--phase-color, #c9b8ff);
-  font-size: 1rem;
-  text-transform: uppercase;
+  margin: 0;
+  font-size: 1.2rem;
   letter-spacing: 0.05em;
+  color: #fff;
 }
 
 .phase-1 { --phase-color: #8b7cf6; }
@@ -639,11 +639,11 @@ select {
   }
 
   .current h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
 
   .current h3 {
-    font-size: 1rem;
+    font-size: 1.1rem;
   }
 
   .stats strong {

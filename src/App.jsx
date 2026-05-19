@@ -175,8 +175,8 @@ function App() {
       <section className="grid">
         <div className={`panel current phase-${currentStage.phase.match(/\d/)?.[0] || '1'}`}>
           <p className="eyebrow">{t.currentPhase}</p>
-          <h3>{currentStage.phase}</h3>
-          <h2>{currentStage.title}</h2>
+          <h2>{currentStage.phase}</h2>
+          <h3>{currentStage.title}</h3>
 
           <div className="stats">
             <div>
