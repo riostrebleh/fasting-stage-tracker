@@ -1,3 +1,5 @@
+import { bibleVersesPT } from './bible.pt.js';
+
 export const portugueseContent = {
   ui: {
     badge: 'Rastreador de Fases do Jejum',
@@ -56,10 +58,6 @@ export const portugueseContent = {
         'A insulina declina em direção ao nível basal.',
         'O corpo armazena cerca de 400–500 gramas de glicogênio nos músculos.',
         'O corpo armazena cerca de 100–120 gramas de glicogênio no fígado.'
-      ],
-      bible: [
-        { reference: 'Mateus 4:4', text: 'Nem só de pão viverá o homem, mas de toda palavra que sai da boca de Deus.' },
-        { reference: 'Filipenses 4:13', text: 'Tudo posso naquele que me fortalece.' }
       ]
     },
     {
@@ -84,10 +82,6 @@ export const portugueseContent = {
         'O glicogênio hepático é esgotado a uma taxa de cerca de 10–15 gramas por hora durante o jejum.',
         'Após 8 horas, cerca de 120 gramas de glicogênio podem ter sido usados.',
         'O hormônio do crescimento começa a aumentar, promovendo a quebra de gordura (lipólise).'
-      ],
-      bible: [
-        { reference: 'Salmos 37:5', text: 'Entrega o teu caminho ao Senhor; confia nele, e ele tudo fará.' },
-        { reference: 'Isaías 40:31', text: 'Mas os que esperam no Senhor renovarão as suas forças.' }
       ]
     },
     {
@@ -111,10 +105,6 @@ export const portugueseContent = {
         'O glicogênio hepático está cerca de 60–70% esgotado.',
         'Os picos de grelina (hormônio da fome) estão 30–40% mais altos.',
         'A fome geralmente vem em ondas que duram cerca de 30–60 minutos.'
-      ],
-      bible: [
-        { reference: '1 Coríntios 10:13', text: 'Deus é fiel e não permitirá que sejais tentados além das vossas forças.' },
-        { reference: 'Salmos 34:10', text: 'Os que buscam ao Senhor de nada têm falta.' }
       ]
     },
     {
@@ -138,10 +128,6 @@ export const portugueseContent = {
         'O glicogênio hepático está cerca de 70–80% esgotado.',
         'Dos 100–120g iniciais de glicogênio hepático, restam apenas cerca de 20–30g.',
         'A enzima CPT1 ajuda a transportar ácidos graxos para as mitocôndrias para serem queimados.'
-      ],
-      bible: [
-        { reference: 'Provérbios 16:3', text: 'Consagre ao Senhor tudo o que você faz, e os seus planos serão bem-sucedidos.' },
-        { reference: '2 Coríntios 12:9', text: 'O meu poder se aperfeiçoa na fraqueza.' }
       ]
     },
     {
@@ -165,10 +151,6 @@ export const portugueseContent = {
         'O fígado produz cetonas, uma fonte de combustível eficiente para o cérebro.',
         'Através da beta-oxidação, ácidos graxos são convertidos em acetoacetato e beta-hidroxibutirato.',
         'Os níveis de grelina começam a diminuir.'
-      ],
-      bible: [
-        { reference: 'Josué 1:9', text: 'Não fui eu que lhe ordenei? Seja forte e corajoso! O Senhor, o seu Deus, estará com você.' },
-        { reference: 'Salmos 23:1', text: 'O Senhor é o meu pastor; de nada terei falta.' }
       ]
     },
     {
@@ -192,10 +174,6 @@ export const portugueseContent = {
         'A produção de cetonas aumenta significativamente.',
         'Os níveis de cetonas no sangue podem subir para 1,5–2,0 mmol/L (cetose nutricional).',
         'O cérebro usa cetonas como fonte primária de energia.'
-      ],
-      bible: [
-        { reference: 'Mateus 6:33', text: 'Busquem, pois, em primeiro lugar o Reino de Deus e a sua justiça.' },
-        { reference: 'Salmos 121:1-2', text: 'Elevo os meus olhos para os montes; de onde vem o meu socorro? O meu socorro vem do Senhor.' }
       ]
     },
     {
@@ -219,10 +197,6 @@ export const portugueseContent = {
         'A autofagia (limpeza celular) começa a aumentar.',
         'O hormônio do crescimento aumenta para reduzir o risco de perda muscular.',
         'Processos metabólicos focam na oxidação de gordura e reparo celular.'
-      ],
-      bible: [
-        { reference: '2 Coríntios 5:17', text: 'Se alguém está em Cristo, é nova criação; as coisas antigas já passaram.' },
-        { reference: 'Salmos 51:10', text: 'Cria em mim, ó Deus, um coração puro e renova dentro de mim um espírito estável.' }
       ]
     },
     {
@@ -246,10 +220,6 @@ export const portugueseContent = {
         'A queima de gordura atinge o pico nesta fase.',
         'A oxidação de gordura aumenta significativamente.',
         'Cetonas no sangue podem chegar a 2,0–3,5 mmol/L.'
-      ],
-      bible: [
-        { reference: 'Gálatas 6:9', text: 'E não nos cansemos de fazer o bem, pois no tempo próprio colheremos.' },
-        { reference: 'Romanos 12:12', text: 'Alegrem-se na esperança, sejam pacientes na tribulação, perseverem na oração.' }
       ]
     },
     {
@@ -275,10 +245,6 @@ export const portugueseContent = {
         'Insulina pode estar 50–70% mais baixa que o normal.',
         'O cortisol pode estar moderadamente elevado para apoiar a gliconeogênese.',
         'A norepinefrina pode aumentar, apoiando o alerta e a mobilização de gordura.'
-      ],
-      bible: [
-        { reference: 'Efésios 6:10', text: 'Finalmente, fortaleçam-se no Senhor e no seu forte poder.' },
-        { reference: 'Salmos 18:32', text: 'Ele é o Deus que me reveste de força e torna perfeito o meu caminho.' }
       ]
     },
     {
@@ -302,10 +268,6 @@ export const portugueseContent = {
         'O corpo torna-se mais eficiente em alternar entre glicose e gordura.',
         'O uso de cetonas continua a aumentar.',
         'A oxidação de gordura permanece elevada.'
-      ],
-      bible: [
-        { reference: 'Lamentações 3:22-23', text: 'As misericórdias do Senhor são a causa de não sermos consumidos; elas se renovam cada manhã.' },
-        { reference: 'Salmos 30:5', text: 'O choro pode persistir uma noite, mas de manhã irrompe a alegria.' }
       ]
     },
     {
@@ -329,13 +291,11 @@ export const portugueseContent = {
         'O corpo prepara-se para a realimentação.',
         'A primeira refeição deve ser moderada e baixa em carboidratos.',
         'Nunca consuma mais de 300g de carboidratos imediatamente após um jejum prolongado.'
-      ],
-      bible: [
-        { reference: 'Eclesiastes 9:7', text: 'Vá, coma a sua comida com alegria e beba o seu vinho com o coração contente.' },
-        { reference: '1 Coríntios 10:31', text: 'Assim, quer vocês comam, quer bebam, façam tudo para a glória de Deus.' }
       ]
     }
-  ]
+  ],
+
+  bibleVerses: bibleVersesPT
 }
 
 portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage, index) => {
@@ -371,7 +331,6 @@ portugueseContent.ketogenicStages = portugueseContent.standardStages.map((stage,
     phaseFrom: stage.phaseFrom,
     phaseTo: stage.phaseTo,
     scientific: stage.scientific,
-    bible: stage.bible,
     ...(ketoOverrides[index] || {
       phase: stage.phase.replace('Fase', 'Fase Cetogênica'),
       feeling: `${stage.feeling} Em low carb, essa fase pode chegar mais rápido do que no ciclo padrão ⚡`

@@ -77,12 +77,17 @@ function App() {
   const nextStage = stages.find((stage) => stage.from >= currentStage.to)
 
   const bibleVerse = useMemo(() => {
-    if (!currentStage.bible || currentStage.bible.length === 0) return null
-    // Usar uma semente baseada no título do estágio para manter o versículo "fixo" por estágio
-    const seed = currentStage.title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
-    const index = seed % currentStage.bible.length
-    return currentStage.bible[index]
-  }, [currentStage])
+    if (!content.bibleVerses || content.bibleVerses.length === 0) return null
+
+    // Usar uma semente que combina o título do estágio e a hora atual do dia
+    // para que o versículo mude ocasionalmente, mas não a cada segundo.
+    const hourSeed = new Date().getHours()
+    const stageSeed = currentStage.title.split('').reduce((acc, char) => acc + char.charCodeAt(0), 0)
+    const seed = stageSeed + hourSeed
+
+    const index = seed % content.bibleVerses.length
+    return content.bibleVerses[index]
+  }, [currentStage, content])
 
   useEffect(() => {
     const timer = setInterval(() => setNow(new Date()), 1000)

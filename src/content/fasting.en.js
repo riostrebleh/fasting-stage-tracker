@@ -1,3 +1,5 @@
+import { bibleVersesEN } from './bible.en.js';
+
 export const englishContent = {
   ui: {
     badge: 'Fasting Stage Tracker',
@@ -56,10 +58,6 @@ export const englishContent = {
         'Insulin declines toward baseline.',
         'Your body stores about 400–500 grams of glycogen in your muscles.',
         'Your body stores about 100–120 grams of glycogen in your liver.'
-      ],
-      bible: [
-        { reference: 'Matthew 4:4', text: 'Man shall not live by bread alone, but by every word that comes from the mouth of God.' },
-        { reference: 'Philippians 4:13', text: 'I can do all things through Christ who strengthens me.' }
       ]
     },
     {
@@ -84,10 +82,6 @@ export const englishContent = {
         'Liver glycogen is depleted at a rate of about 10–15 grams per hour during fasting.',
         'After 8 hours, around 120 grams of glycogen may have been used.',
         'Growth hormone starts to increase, promoting fat breakdown (lipolysis).'
-      ],
-      bible: [
-        { reference: 'Psalm 37:5', text: 'Commit your way to the Lord; trust in him and he will do this.' },
-        { reference: 'Isaiah 40:31', text: 'But those who hope in the Lord will renew their strength.' }
       ]
     },
     {
@@ -111,10 +105,6 @@ export const englishContent = {
         'Liver glycogen is around 60–70% depleted.',
         'Ghrelin (hunger hormone) peaks around 30–40% higher.',
         'Hunger usually comes in waves lasting around 30–60 minutes.'
-      ],
-      bible: [
-        { reference: '1 Corinthians 10:13', text: 'God is faithful; he will not let you be tempted beyond what you can bear.' },
-        { reference: 'Psalm 34:10', text: 'Those who seek the Lord lack no good thing.' }
       ]
     },
     {
@@ -138,10 +128,6 @@ export const englishContent = {
         'Liver glycogen is around 70–80% depleted.',
         'From an initial 100–120g of liver glycogen, around 20–30g may remain.',
         'CPT1 enzyme helps transport fatty acids into the mitochondria to be burned.'
-      ],
-      bible: [
-        { reference: 'Proverbs 16:3', text: 'Commit to the Lord whatever you do, and he will establish your plans.' },
-        { reference: '2 Corinthians 12:9', text: 'My power is made perfect in weakness.' }
       ]
     },
     {
@@ -165,10 +151,6 @@ export const englishContent = {
         'The liver starts producing ketones, an efficient fuel source for the brain.',
         'Through beta-oxidation, fatty acids are converted into acetoacetate and beta-hydroxybutyrate.',
         'Ghrelin levels begin to decrease.'
-      ],
-      bible: [
-        { reference: 'Joshua 1:9', text: 'Have I not commanded you? Be strong and courageous. The Lord your God will be with you.' },
-        { reference: 'Psalm 23:1', text: 'The Lord is my shepherd, I lack nothing.' }
       ]
     },
     {
@@ -192,10 +174,6 @@ export const englishContent = {
         'Ketone production increases significantly.',
         'Blood ketone levels may climb toward 1.5–2.0 mmol/L (nutritional ketosis).',
         'The brain starts using ketones as a major energy source.'
-      ],
-      bible: [
-        { reference: 'Matthew 6:33', text: 'But seek first his kingdom and his righteousness.' },
-        { reference: 'Psalm 121:1-2', text: 'I lift up my eyes to the mountains—where does my help come from? My help comes from the Lord.' }
       ]
     },
     {
@@ -219,10 +197,6 @@ export const englishContent = {
         'Autophagy (cellular cleanup) begins to increase.',
         'Growth hormone may increase to help reduce the risk of muscle loss.',
         'Metabolic processes continue shifting toward fat oxidation and cellular repair.'
-      ],
-      bible: [
-        { reference: '2 Corinthians 5:17', text: 'If anyone is in Christ, the new creation has come: The old has gone, the new is here!' },
-        { reference: 'Psalm 51:10', text: 'Create in me a pure heart, O God, and renew a steadfast spirit within me.' }
       ]
     },
     {
@@ -246,10 +220,6 @@ export const englishContent = {
         'Fat burning may peak during this phase.',
         'Fat oxidation rises significantly.',
         'Blood ketones may rise to around 2.0–3.5 mmol/L.'
-      ],
-      bible: [
-        { reference: 'Galatians 6:9', text: 'Let us not become weary in doing good, for at the proper time we will reap.' },
-        { reference: 'Romans 12:12', text: 'Be joyful in hope, patient in affliction, faithful in prayer.' }
       ]
     },
     {
@@ -275,10 +245,6 @@ export const englishContent = {
         'Insulin may be 50–70% lower.',
         'Cortisol may be moderately elevated to support gluconeogenesis.',
         'Norepinephrine may increase, supporting alertness and fat mobilization.'
-      ],
-      bible: [
-        { reference: 'Ephesians 6:10', text: 'Finally, be strong in the Lord and in his mighty power.' },
-        { reference: 'Psalm 18:32', text: 'It is God who arms me with strength and shined my way perfect.' }
       ]
     },
     {
@@ -302,10 +268,6 @@ export const englishContent = {
         'The body becomes more efficient at switching between glucose and fat.',
         'Ketone use continues to increase.',
         'Fat oxidation remains elevated.'
-      ],
-      bible: [
-        { reference: 'Lamentations 3:22-23', text: 'Because of the Lord’s great love we are not consumed, for his compassions never fail. They are new every morning.' },
-        { reference: 'Psalm 30:5', text: 'Weeping may stay for the night, but rejoicing comes in the morning.' }
       ]
     },
     {
@@ -329,13 +291,11 @@ export const englishContent = {
         'The body prepares for refeeding.',
         'The first meal should be moderate and not extremely high in carbohydrates.',
         'Never consume more than 300 grams of carbohydrates immediately after an extended fast.'
-      ],
-      bible: [
-        { reference: 'Ecclesiastes 9:7', text: 'Go, eat your food with gladness, and drink your wine with a joyful heart.' },
-        { reference: '1 Corinthians 10:31', text: 'So whether you eat or drink or whatever you do, do it all for the glory of God.' }
       ]
     }
-  ]
+  ],
+
+  bibleVerses: bibleVersesEN
 }
 
 englishContent.ketogenicStages = englishContent.standardStages.map((stage, index) => {
@@ -371,7 +331,6 @@ englishContent.ketogenicStages = englishContent.standardStages.map((stage, index
     phaseFrom: stage.phaseFrom,
     phaseTo: stage.phaseTo,
     scientific: stage.scientific,
-    bible: stage.bible,
     ...(ketoOverrides[index] || {
       phase: stage.phase.replace('Phase', 'Keto Phase'),
       feeling: `${stage.feeling} On low carb, this phase may arrive faster than in the standard cycle ⚡`

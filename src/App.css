@@ -345,6 +345,9 @@ select {
 
 .tabContent {
   animation: fadeIn 0.3s ease;
+  min-height: 280px;
+  display: flex;
+  flex-direction: column;
 }
 
 @keyframes fadeIn {
@@ -353,10 +356,14 @@ select {
 }
 
 .bibleContent {
-  padding: 20px;
+  padding: 24px;
   background: rgba(255, 255, 255, 0.03);
   border-radius: 18px;
   border: 1px dashed rgba(255, 255, 255, 0.1);
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .bibleContent blockquote {
@@ -604,6 +611,9 @@ select {
 
   .hero p {
     font-size: 1rem;
+  }
+  .tabContent {
+    min-height: auto;
   }
 }
 
